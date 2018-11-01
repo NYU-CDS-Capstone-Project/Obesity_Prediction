@@ -92,6 +92,7 @@ def build_features_gen(patient_data, maternal_data, maternal_hist_data, lat_lon_
 
 @if_data_nonexistent
 def build_features_vitalLatest(patient_data, maternal_data, maternal_hist_data, lat_lon_data, env_data, reference_date_start, reference_date_end, feature_index, feature_headers):
+    ## Filter out vital values
     res = np.zeros(len(feature_headers), dtype=float)
     bdate = patient_data['bdate']
     for code in patient_data['vitals']:
@@ -455,6 +456,7 @@ def build_features_nb_icd(patient_data, maternal_data, maternal_hist_data, lat_l
 
 @if_data_nonexistent
 def build_features_mat_race(patient_data, maternal_data, maternal_hist_data, lat_lon_data, env_data, reference_date_start, reference_date_end, feature_index, feature_headers):
+    
     res = np.zeros(len(feature_headers), dtype=bool)
     if 'race' not in maternal_data:
         return res
@@ -542,6 +544,7 @@ def mother_child_map(patient_data, maternal_data, maternal_hist_data):
 def build_features_mat_hist_value(patient_data, maternal_data, maternal_hist_data, lat_lon_data, env_data, reference_date_start, reference_date_end, feature_index, feature_headers, mother_child_data, output_type, measurement, period):
     """
     Function to process maternal doctor visits.
+    Mainly build dummies for each feature
     #### PARAMETERS ####
     output_type:
         "count" - returns count of occurrences
