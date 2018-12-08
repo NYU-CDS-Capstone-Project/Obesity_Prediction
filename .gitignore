@@ -1,2 +1,5 @@
-auxdata
 obesity_demo
+*.csv
+dshan_temp_data
+Test_HClustering.ipynb
+Test_RF.ipynb
